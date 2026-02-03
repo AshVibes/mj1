@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Interview Helper{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Interview Helper</h1>
+            <p>Streamline your interview process with our comprehensive tool</p>
+            <div class="hero-buttons">
+                <a href="{% url 'interviews' %}" class="btn btn-primary">Start Interview</a>
+                <a href="{% url 'candidates' %}" class="btn btn-secondary">Manage Candidates</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard">
+        <h2>Dashboard</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Total Candidates</h3>
+                <p class="stat-number">24</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <h3>Interviews Completed</h3>
+                <p class="stat-number">18</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h3>Question Bank</h3>
+                <p class="stat-number">156</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Avg Rating</h3>
+                <p class="stat-number">4.2/5</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="recent-interviews">
+        <h2>Recent Interviews</h2>
+        <div class="interview-list">
+            <div class="interview-item">
+                <div class="interview-info">
+                    <h4>John Doe</h4>
+                    <p>Frontend Developer Position</p>
+                    <span class="date">Feb 3, 2026</span>
+                </div>
+                <div class="interview-rating">
+                    <span class="rating">4.5/5</span>
+                    <span class="status completed">Completed</span>
+                </div>
+            </div>
+            <div class="interview-item">
+                <div class="interview-info">
+                    <h4>Jane Smith</h4>
+                    <p>Backend Developer Position</p>
+                    <span class="date">Feb 2, 2026</span>
+                </div>
+                <div class="interview-rating">
+                    <span class="rating">4.0/5</span>
+                    <span class="status completed">Completed</span>
+                </div>
+            </div>
+            <div class="interview-item">
+                <div class="interview-info">
+                    <h4>Mike Johnson</h4>
+                    <p>Full Stack Developer Position</p>
+                    <span class="date">Feb 1, 2026</span>
+                </div>
+                <div class="interview-rating">
+                    <span class="rating">3.8/5</span>
+                    <span class="status pending">Pending</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

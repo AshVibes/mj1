@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Candidates - Interview Helper{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Candidates</h1>
+        <button class="btn btn-primary" id="addCandidateBtn">
+            <i class="fas fa-plus"></i> Add Candidate
+        </button>
+    </div>
+
+    <div class="filters">
+        <input type="text" placeholder="Search candidates..." class="search-input">
+        <select class="filter-select">
+            <option value="">All Statuses</option>
+            <option value="new">New</option>
+            <option value="interviewed">Interviewed</option>
+            <option value="hired">Hired</option>
+            <option value="rejected">Rejected</option>
+        </select>
+    </div>
+
+    <div class="candidates-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Applied Date</th>
+                    <th>Status</th>
+                    <th>Rating</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Alice Anderson</strong></td>
+                    <td>Senior Developer</td>
+                    <td>alice@example.com</td>
+                    <td>(555) 123-4567</td>
+                    <td>Jan 28, 2026</td>
+                    <td><span class="status-badge interviewed">Interviewed</span></td>
+                    <td><span class="rating">4.5/5</span></td>
+                    <td>
+                        <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Bob Brown</strong></td>
+                    <td>Junior Developer</td>
+                    <td>bob@example.com</td>
+                    <td>(555) 234-5678</td>
+                    <td>Jan 25, 2026</td>
+                    <td><span class="status-badge new">New</span></td>
+                    <td><span class="rating">-</span></td>
+                    <td>
+                        <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Carol Chen</strong></td>
+                    <td>QA Engineer</td>
+                    <td>carol@example.com</td>
+                    <td>(555) 345-6789</td>
+                    <td>Jan 22, 2026</td>
+                    <td><span class="status-badge hired">Hired</span></td>
+                    <td><span class="rating">4.8/5</span></td>
+                    <td>
+                        <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>David Davis</strong></td>
+                    <td>Product Manager</td>
+                    <td>david@example.com</td>
+                    <td>(555) 456-7890</td>
+                    <td>Jan 20, 2026</td>
+                    <td><span class="status-badge rejected">Rejected</span></td>
+                    <td><span class="rating">2.5/5</span></td>
+                    <td>
+                        <button class="btn-icon" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add Candidate Modal -->
+<div id="addCandidateModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Add New Candidate</h2>
+        <form id="addCandidateForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Phone *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="positionApplied">Position Applied *</label>
+                    <input type="text" id="positionApplied" name="positionApplied" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="resume">Resume URL</label>
+                <input type="url" id="resume" name="resume">
+            </div>
+            <div class="form-group">
+                <label for="notes">Notes</label>
+                <textarea id="notes" name="notes" rows="4"></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Add Candidate</button>
+                <button type="button" class="btn btn-secondary" id="cancelCandidateBtn">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/candidates.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Questions - Interview Helper{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Question Bank</h1>
+        <button class="btn btn-primary" id="addQuestionBtn">
+            <i class="fas fa-plus"></i> Add Question
+        </button>
+    </div>
+
+    <div class="filters">
+        <input type="text" placeholder="Search questions..." class="search-input">
+        <select class="filter-select">
+            <option value="">All Categories</option>
+            <option value="technical">Technical</option>
+            <option value="behavioral">Behavioral</option>
+            <option value="coding">Coding</option>
+            <option value="design">System Design</option>
+        </select>
+        <select class="filter-select">
+            <option value="">All Difficulty</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div>
+
+    <div class="questions-list">
+        <div class="question-card">
+            <div class="question-header">
+                <h3>Explain the difference between var, let, and const in JavaScript</h3>
+                <span class="badge category">Technical</span>
+                <span class="badge difficulty easy">Easy</span>
+            </div>
+            <div class="question-body">
+                <p>This question assesses understanding of JavaScript scope and hoisting behavior.</p>
+                <div class="question-meta">
+                    <span><i class="fas fa-tag"></i> JavaScript</span>
+                    <span><i class="fas fa-chart-bar"></i> Frontend</span>
+                </div>
+            </div>
+            <div class="question-footer">
+                <button class="btn btn-sm btn-primary">View</button>
+                <button class="btn btn-sm btn-secondary">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">
+                <h3>Describe a time when you had to work with a difficult team member</h3>
+                <span class="badge category">Behavioral</span>
+                <span class="badge difficulty medium">Medium</span>
+            </div>
+            <div class="question-body">
+                <p>Assesses candidate's soft skills and ability to handle interpersonal conflicts.</p>
+                <div class="question-meta">
+                    <span><i class="fas fa-tag"></i> Soft Skills</span>
+                    <span><i class="fas fa-chart-bar"></i> All Levels</span>
+                </div>
+            </div>
+            <div class="question-footer">
+                <button class="btn btn-sm btn-primary">View</button>
+                <button class="btn btn-sm btn-secondary">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">
+                <h3>Implement a binary search algorithm</h3>
+                <span class="badge category">Coding</span>
+                <span class="badge difficulty hard">Hard</span>
+            </div>
+            <div class="question-body">
+                <p>Tests candidate's ability to implement efficient search algorithms and understand time complexity.</p>
+                <div class="question-meta">
+                    <span><i class="fas fa-tag"></i> Algorithms</span>
+                    <span><i class="fas fa-chart-bar"></i> Backend</span>
+                </div>
+            </div>
+            <div class="question-footer">
+                <button class="btn btn-sm btn-primary">View</button>
+                <button class="btn btn-sm btn-secondary">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">
+                <h3>Design a URL shortening service</h3>
+                <span class="badge category">Design</span>
+                <span class="badge difficulty hard">Hard</span>
+            </div>
+            <div class="question-body">
+                <p>Evaluates system design knowledge, scalability thinking, and architecture skills.</p>
+                <div class="question-meta">
+                    <span><i class="fas fa-tag"></i> System Design</span>
+                    <span><i class="fas fa-chart-bar"></i> Senior</span>
+                </div>
+            </div>
+            <div class="question-footer">
+                <button class="btn btn-sm btn-primary">View</button>
+                <button class="btn btn-sm btn-secondary">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Question Modal -->
+<div id="addQuestionModal" class="modal">
+    <div class="modal-content large">
+        <span class="close">&times;</span>
+        <h2>Add New Question</h2>
+        <form id="addQuestionForm">
+            <div class="form-group">
+                <label for="questionText">Question *</label>
+                <textarea id="questionText" name="questionText" rows="4" required placeholder="Enter the interview question..."></textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="category">Category *</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select category...</option>
+                        <option value="technical">Technical</option>
+                        <option value="behavioral">Behavioral</option>
+                        <option value="coding">Coding</option>
+                        <option value="design">System Design</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="difficulty">Difficulty *</label>
+                    <select id="difficulty" name="difficulty" required>
+                        <option value="">Select difficulty...</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tags">Tags (comma-separated)</label>
+                <input type="text" id="tags" name="tags" placeholder="e.g., JavaScript, Frontend, Algorithms">
+            </div>
+            <div class="form-group">
+                <label for="expectedAnswer">Expected Answer/Guidelines</label>
+                <textarea id="expectedAnswer" name="expectedAnswer" rows="5" placeholder="What should a good answer contain?"></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Add Question</button>
+                <button type="button" class="btn btn-secondary" id="cancelQuestionBtn">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/questions.js' %}"></script>
+{% endblock %}

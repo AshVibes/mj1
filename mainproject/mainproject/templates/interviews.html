@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Interviews - Interview Helper{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Interviews</h1>
+        <button class="btn btn-primary" id="newInterviewBtn">
+            <i class="fas fa-plus"></i> New Interview
+        </button>
+    </div>
+
+    <div class="filters">
+        <input type="text" placeholder="Search by candidate name..." class="search-input">
+        <select class="filter-select">
+            <option value="">All Statuses</option>
+            <option value="completed">Completed</option>
+            <option value="in-progress">In Progress</option>
+            <option value="pending">Pending</option>
+        </select>
+    </div>
+
+    <div class="interviews-grid">
+        <div class="interview-card">
+            <div class="card-header">
+                <h3>Alice Anderson</h3>
+                <span class="position-badge">Senior Developer</span>
+            </div>
+            <div class="card-body">
+                <p><strong>Date:</strong> Feb 3, 2026</p>
+                <p><strong>Duration:</strong> 45 minutes</p>
+                <p><strong>Rating:</strong> <span class="rating">4.5/5</span></p>
+                <p><strong>Status:</strong> <span class="status-badge completed">Completed</span></p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-sm btn-primary">View Details</button>
+                <button class="btn btn-sm btn-secondary">Edit Notes</button>
+            </div>
+        </div>
+
+        <div class="interview-card">
+            <div class="card-header">
+                <h3>Bob Brown</h3>
+                <span class="position-badge">Junior Developer</span>
+            </div>
+            <div class="card-body">
+                <p><strong>Date:</strong> Feb 2, 2026</p>
+                <p><strong>Duration:</strong> 60 minutes</p>
+                <p><strong>Rating:</strong> <span class="rating">3.8/5</span></p>
+                <p><strong>Status:</strong> <span class="status-badge in-progress">In Progress</span></p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-sm btn-primary">Continue</button>
+                <button class="btn btn-sm btn-secondary">View Details</button>
+            </div>
+        </div>
+
+        <div class="interview-card">
+            <div class="card-header">
+                <h3>Carol Chen</h3>
+                <span class="position-badge">QA Engineer</span>
+            </div>
+            <div class="card-body">
+                <p><strong>Date:</strong> Feb 1, 2026</p>
+                <p><strong>Duration:</strong> Pending</p>
+                <p><strong>Rating:</strong> <span class="rating">-</span></p>
+                <p><strong>Status:</strong> <span class="status-badge pending">Pending</span></p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-sm btn-primary">Start Interview</button>
+                <button class="btn btn-sm btn-secondary">Cancel</button>
+            </div>
+        </div>
+
+        <div class="interview-card">
+            <div class="card-header">
+                <h3>David Davis</h3>
+                <span class="position-badge">Product Manager</span>
+            </div>
+            <div class="card-body">
+                <p><strong>Date:</strong> Jan 31, 2026</p>
+                <p><strong>Duration:</strong> 55 minutes</p>
+                <p><strong>Rating:</strong> <span class="rating">4.2/5</span></p>
+                <p><strong>Status:</strong> <span class="status-badge completed">Completed</span></p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-sm btn-primary">View Details</button>
+                <button class="btn btn-sm btn-secondary">Edit Notes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New Interview Modal -->
+<div id="newInterviewModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Create New Interview</h2>
+        <form id="newInterviewForm">
+            <div class="form-group">
+                <label for="candidateName">Candidate Name *</label>
+                <input type="text" id="candidateName" name="candidateName" required>
+            </div>
+            <div class="form-group">
+                <label for="position">Position *</label>
+                <input type="text" id="position" name="position" required>
+            </div>
+            <div class="form-group">
+                <label for="interviewDate">Interview Date *</label>
+                <input type="datetime-local" id="interviewDate" name="interviewDate" required>
+            </div>
+            <div class="form-group">
+                <label for="questionSet">Select Question Set *</label>
+                <select id="questionSet" name="questionSet" required>
+                    <option value="">Choose a set...</option>
+                    <option value="frontend">Frontend Developer</option>
+                    <option value="backend">Backend Developer</option>
+                    <option value="fullstack">Full Stack Developer</option>
+                    <option value="qa">QA Engineer</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Create Interview</button>
+                <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/interviews.js' %}"></script>
+{% endblock %}

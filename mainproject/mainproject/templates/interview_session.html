@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Interview Session - Interview Helper{% endblock %}
+
+{% block content %}
+<div class="interview-session">
+    <div class="session-header">
+        <div class="session-info">
+            <h1>Interview with John Doe</h1>
+            <p>Position: Senior Frontend Developer</p>
+        </div>
+        <div class="session-timer">
+            <span id="timer" class="timer-display">00:45:30</span>
+            <p>Time Elapsed</p>
+        </div>
+    </div>
+
+    <div class="session-container">
+        <div class="questions-panel">
+            <h3>Questions</h3>
+            <div class="question-list">
+                <div class="question-item active" data-question="1">
+                    <span class="question-number">1</span>
+                    <span class="question-preview">Explain the difference between...</span>
+                </div>
+                <div class="question-item" data-question="2">
+                    <span class="question-number">2</span>
+                    <span class="question-preview">How do you optimize React...</span>
+                </div>
+                <div class="question-item" data-question="3">
+                    <span class="question-number">3</span>
+                    <span class="question-preview">What is the difference between...</span>
+                </div>
+                <div class="question-item" data-question="4">
+                    <span class="question-number">4</span>
+                    <span class="question-preview">Describe a project where you...</span>
+                </div>
+                <div class="question-item" data-question="5">
+                    <span class="question-number">5</span>
+                    <span class="question-preview">What are your career goals...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <div class="question-display">
+                <h2 id="currentQuestion">Explain the difference between var, let, and const in JavaScript</h2>
+                <div class="question-details">
+                    <span class="badge category">Technical</span>
+                    <span class="badge difficulty">Medium</span>
+                </div>
+            </div>
+
+            <div class="response-area">
+                <h3>Candidate Response Notes</h3>
+                <textarea id="responseNotes" class="response-textarea" placeholder="Enter notes about the candidate's response..."></textarea>
+            </div>
+
+            <div class="rating-area">
+                <h3>Rate this Answer</h3>
+                <div class="rating-container">
+                    <div class="rating-buttons">
+                        <button class="rating-btn" data-rating="1">1</button>
+                        <button class="rating-btn" data-rating="2">2</button>
+                        <button class="rating-btn" data-rating="3">3</button>
+                        <button class="rating-btn" data-rating="4">4</button>
+                        <button class="rating-btn" data-rating="5">5</button>
+                    </div>
+                    <p class="rating-labels">
+                        <span>Poor</span>
+                        <span>Excellent</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="btn btn-secondary" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <button class="btn btn-primary" id="nextBtn">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="btn btn-danger" id="endBtn">
+                    End Interview
+                </button>
+            </div>
+        </div>
+
+        <div class="sidebar-panel">
+            <div class="candidate-info-box">
+                <h4>Candidate Info</h4>
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Position:</strong> Senior Frontend Developer</p>
+                <p><strong>Applied:</strong> Jan 28, 2026</p>
+            </div>
+
+            <div class="quick-notes">
+                <h4>Quick Notes</h4>
+                <textarea id="quickNotes" placeholder="Add quick observations..."></textarea>
+            </div>
+
+            <div class="interview-stats">
+                <h4>Interview Stats</h4>
+                <p><strong>Current:</strong> Question 1 of 5</p>
+                <p><strong>Time per Q:</strong> ~9 min avg</p>
+                <p><strong>Overall Rating:</strong> <span class="rating-value">-</span>/5</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Interview Modal -->
+<div id="endInterviewModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>End Interview</h2>
+        <p>Are you sure you want to end this interview?</p>
+        <div class="form-group">
+            <label for="finalRating">Final Rating *</label>
+            <div class="rating-stars">
+                <i class="fas fa-star" data-star="1"></i>
+                <i class="fas fa-star" data-star="2"></i>
+                <i class="fas fa-star" data-star="3"></i>
+                <i class="fas fa-star" data-star="4"></i>
+                <i class="fas fa-star" data-star="5"></i>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="finalNotes">Final Notes</label>
+            <textarea id="finalNotes" placeholder="Add final interview notes..."></textarea>
+        </div>
+        <div class="form-actions">
+            <button class="btn btn-primary" id="confirmEndBtn">Save & End Interview</button>
+            <button class="btn btn-secondary" id="cancelEndBtn">Cancel</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/interview-session.js' %}"></script>
+{% endblock %}
